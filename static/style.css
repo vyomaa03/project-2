@@ -1,0 +1,12 @@
+h1, h3 {
+    text-align: center;
+    font-family: Georgia, Times, 'Times New Roman', serif;
+}
+
+.person {
+    text-align: right;
+}
+
+.quote {
+    text-align: center;
+}
