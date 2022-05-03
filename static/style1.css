@@ -1,5 +1,10 @@
 /* This is the css file for the sign up page */
 
+html {
+    background-color: bisque;
+}
+
+
 body {
     text-align: center;
 }

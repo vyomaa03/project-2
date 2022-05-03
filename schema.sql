@@ -7,6 +7,5 @@ DROP TABLE IF EXISTS userinfo
 CREATE TABLE userinfo(
     id SERIAL PRIMARY KEY,
     username TEXT,
-    user_password password,
     home_airport TEXT,
 );

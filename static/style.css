@@ -1,4 +1,11 @@
 /* This is the css file for the home page */
+
+html {
+    background-color: bisque;
+}
+
+
+
 h1, h3 {
     text-align: center;
     font-family: Georgia, Times, 'Times New Roman', serif;
