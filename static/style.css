@@ -1,7 +1,7 @@
 /* This is the css file for the home page */
 
 html {
-    background-color: bisque;
+    background-color: seashell;
 }
 
 
@@ -17,4 +17,9 @@ h1, h3 {
 
 .quote {
     text-align: center;
+}
+
+.button {
+    border-width: 2px;
+    border-color: brown;
 }

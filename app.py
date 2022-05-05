@@ -20,5 +20,10 @@ def login(): # when the login button is pressed it should return this html
 def signup(): # when the login button is pressed it should return this html
     return render_template('signup.html')
 
+
+@app.route('/main')
+def main():
+    return render_template('user_main.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
