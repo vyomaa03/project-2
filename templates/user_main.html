@@ -8,12 +8,27 @@
     <title>main</title>
 </head>
 <body>
-    <h2>Hello there</h2>
-    <p>Enter a location's latitude and longitude for its weather information</p>
-    <form method="post" action="/weather_get">
-        <input type="text" name="lat"> <br>
-        <input type="text" name="lon">
-        <input type="submit">
-    </form>
+    <div id="input">
+        <h2>Hello there {{username}}</h2>
+        <p>Enter a location's latitude and longitude for its weather information</p>
+        <form method="post" action="/weather_get">
+            <input type="text" name="lat"> <br>
+            <input type="text" name="lon">
+            <input type="submit">
+        </form>
+    </div>
+
+    <div id="current"> 
+        <p>Timezone: {{timezone}}</p>
+        <p>Current humidity: {{humidity}}</p>
+        <p>Current pressure: {{pressure}}</p>
+        <p>Current cloud: {{clouds}}</p>
+        <p>Current visibility: {{visibility}}</p>
+        <p>Current wind_speed: {{speed}}</p>
+        <p>Current wind_gust: {{gust}}</p>
+        <p>Current wind_heading: {{heading}}</p>
+    </div>
+
+
 </body>
 </html>

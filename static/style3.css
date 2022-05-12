@@ -1,3 +1,12 @@
 html {
     background-color: seashell;
 }
+
+#input {
+    text-align: center;
+}
+
+#current {
+    text-align: center;
+    border-radius: 20px;
+}
