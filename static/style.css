@@ -5,21 +5,19 @@ html {
 }
 
 
-
-h1, h3 {
+h1, h5 {
     text-align: center;
     font-family: Georgia, Times, 'Times New Roman', serif;
 }
 
 .person {
     text-align: right;
+    background-color: #e4e1dc;
+    
 }
 
 .quote {
     text-align: center;
+    background-color: #e4e1dc;
 }
 
-.button {
-    border-width: 2px;
-    border-color: brown;
-}
