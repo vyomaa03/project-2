@@ -1,3 +1,4 @@
+from crypt import methods
 from unittest import result
 from flask import Flask, g, redirect, render_template, request, session
 import os
@@ -29,9 +30,9 @@ def home():
 def login(): # when the login button is pressed it should return this html
     return render_template('login.html')
 
-@app.route('/login', method=['POST'])
+@app.route('/login', methods=['POST'])
 def login_action():
-    email = request.form.get('email')
+    email = request.form.get('username')
     password = request.form.get('password') 
     rows = sql_fetch('SELECT id, name, password_hash FROM users WHERE email = %s', [email])
     if len(rows) != 0:
@@ -56,10 +57,11 @@ def signup(): # when the login button is pressed it should return this html
 
 @app.route('/signup', methods=['POST'])
 def signup_action():
-  email = request.form.get('email')
+  email = request.form.get('username')
   password = request.form.get('password')
   pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
   sql_write("INSERT INTO users (email, name, password_hash) VALUES (%s, %s, %s)", [email, 'name', pw_hash])
+  print('done')
   return redirect('/weather')
 
 @app.route('/weather')
