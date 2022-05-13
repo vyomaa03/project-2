@@ -9,7 +9,7 @@ import bcrypt
 from database import sql_fetch, sql_write
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'something')
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 
@@ -82,8 +82,9 @@ def main():
     speed = result['current']['wind_speed']
     gust = result['current']['wind_gust']
     heading = result['current']['wind_deg']
+    test_humidity = result['hourly']['humidity']
 
-    return render_template('user_main.html',timezone=timezone,humidity=humidity, pressure=pressure, clouds=clouds, visibility=visibility,speed=speed, gust=gust, heading=heading,)
+    return render_template('user_main.html',timezone=timezone,humidity=humidity, pressure=pressure, clouds=clouds, visibility=visibility,speed=speed, gust=gust, heading=heading, test_humidity=test_humidity)
 
 
 if __name__ == '__main__':
