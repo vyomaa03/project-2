@@ -1,4 +1,5 @@
 from crypt import methods
+import email
 from unittest import result
 from flask import Flask, g, redirect, render_template, request, session
 import os
@@ -50,6 +51,15 @@ def login_action():
         return redirect('/login')
 
 
+@app.route('/add_location', methods=['POST'])
+def addLocation():
+    latitude = request.form.get('lat')
+    longitude = request.form.get('lon')
+    sql_write("INSERT INTO locations (latitude, longitude) VALUES (%s, %s)", [latitude, longitude])
+    print('done')
+    return redirect('/weather')
+
+
 @app.route('/signup')
 def signup(): # when the login button is pressed it should return this html
     return render_template('signup.html')
@@ -82,9 +92,8 @@ def main():
     speed = result['current']['wind_speed']
     gust = result['current']['wind_gust']
     heading = result['current']['wind_deg']
-    test_humidity = result['hourly']['humidity']
 
-    return render_template('user_main.html',timezone=timezone,humidity=humidity, pressure=pressure, clouds=clouds, visibility=visibility,speed=speed, gust=gust, heading=heading, test_humidity=test_humidity)
+    return render_template('user_main.html',timezone=timezone,humidity=humidity, pressure=pressure, clouds=clouds, visibility=visibility,speed=speed, gust=gust, heading=heading,email=email)
 
 
 if __name__ == '__main__':
