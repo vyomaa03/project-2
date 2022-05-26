@@ -2,11 +2,19 @@ html {
     background-color: seashell;
 }
 
+#container {
+    display: flex;
+    border-color: black;
+}
+
 #input {
-    text-align: center;
+    display:inline-flex;
 }
 
 #current {
-    text-align: center;
-    border-radius: 20px;
+    border-color: tomato;
+    border-width: 20px;
+}
+#more_info {
+    display: inline-block;
 }
