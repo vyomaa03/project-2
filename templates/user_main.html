@@ -8,25 +8,15 @@
     <title>main</title>
 </head>
 <body>
-    <div id="container"></div>
+    <div id="container">
     <div id="input">
         <h2>Hello there</h2>
         <p>Enter a location's latitude and longitude for its weather information</p>
         <form method="post" action="/weather_get">
-            <input type="text" name="lat"> <br>
+            <input type="text" name="lat">
             <input type="text" name="lon">
             <input type="submit">
         </form>
-    </div>
-
-    <div id="more_info">
-        <p>Enter the latitude and longitude to save the location</p>
-        <form method="post" action="/add_location">
-            <input type="text" name="lat"> <br>
-            <input type="text" name="lon">
-            <input type="submit">
-        </form>
-
     </div>
 
     <div id="current"> 
@@ -38,6 +28,16 @@
         <p>Current wind_speed: {{speed}}</p>
         <p>Current wind_gust: {{gust}}</p>
         <p>Current wind_heading: {{heading}}</p>
+    </div>
+
+
+    <div id="more_info">
+        <p>Enter the latitude and longitude to save the location</p>
+        <form method="post" action="/add_location">
+            <input type="text" name="lat">
+            <input type="text" name="lon">
+            <input type="submit">
+        </form>
     </div>
 
     </div>

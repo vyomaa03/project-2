@@ -3,18 +3,33 @@ html {
 }
 
 #container {
+    height: 600px;
     display: flex;
-    border-color: black;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 #input {
-    display:inline-flex;
+    border-color: tomato;
+    border-style: dotted;
+    border-width: 8px;
+    text-align: center;
+
+}
+#more_info {
+    border-color: blue;
+    border-width: 8px;
+    border-style: dotted;
+    text-align: center;
 }
 
 #current {
-    border-color: tomato;
-    border-width: 20px;
-}
-#more_info {
-    display: inline-block;
+    border-color: green;
+    border-width: 8px;
+    border-style: dotted;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:flex-start;
 }
