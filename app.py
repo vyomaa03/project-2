@@ -40,7 +40,6 @@ def login_action():
         user_id = rows[0][0]
         name = rows[0][1]
         password_hash = rows[0][2]
-        print(password)
         print(name, password_hash)
         valid = bcrypt.checkpw(password.encode(), password_hash.encode())
         print(valid)
@@ -57,6 +56,9 @@ def addLocation():
     longitude = request.form.get('lon')
     sql_write("INSERT INTO locations (latitude, longitude) VALUES (%s, %s)", [latitude, longitude])
     print('done')
+    rows = sql_fetch('SELECT latitude, longitude FROM locations')
+    for row in rows:
+        print(row)
     return redirect('/weather')
 
 

@@ -11,23 +11,16 @@ html {
 }
 
 #input {
-    border-color: tomato;
-    border-style: dotted;
-    border-width: 8px;
+  
     text-align: center;
 
 }
 #more_info {
-    border-color: blue;
-    border-width: 8px;
-    border-style: dotted;
     text-align: center;
 }
 
 #current {
-    border-color: green;
-    border-width: 8px;
-    border-style: dotted;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
