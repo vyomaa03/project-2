@@ -56,9 +56,6 @@ def addLocation():
     longitude = request.form.get('lon')
     sql_write("INSERT INTO locations (latitude, longitude) VALUES (%s, %s)", [latitude, longitude])
     print('done')
-    rows = sql_fetch('SELECT latitude, longitude FROM locations')
-    for row in rows:
-        print(row)
     return redirect('/weather')
 
 
@@ -78,9 +75,13 @@ def signup_action():
 
 @app.route('/weather')
 def not_main():
-    return render_template('user_main.html')
+    rows = sql_fetch('SELECT latitude, longitude FROM locations')
+    print(rows)
+    for row in rows:
+        print(row) 
+    return render_template('user_main.html', rows=rows)
 
-@app.route('/weather_get', methods=['post'])
+@app.route('/weather_get', methods=['post']) # change to a get
 def main():
     lat = request.form.get('lat')
     lon = request.form.get('lon')

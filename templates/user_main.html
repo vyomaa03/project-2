@@ -12,7 +12,7 @@
     <div id="input">
         <h2>Hello there</h2>
         <p>Enter a location's latitude and longitude for its weather information</p>
-        <form method="post" action="/weather_get">
+        <form method="get" action="/weather">
             <input type="text" name="lat">
             <input type="text" name="lon">
             <input type="submit">
@@ -39,8 +39,11 @@
             <input type="submit">
         </form>
     </div>
-
+ 
     <div id="saved">
+        {% for row in rows %}
+            Rows: {{row}}
+      {% endfor %}
     </div>
 
     </div>
