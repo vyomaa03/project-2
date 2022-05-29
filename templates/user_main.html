@@ -41,11 +41,23 @@
     </div>
  
     <div id="saved">
-        {% for row in rows %}
-            Rows: {{row}}
-      {% endfor %}
-    </div>
-
+        Previously entered locations: <br>
+        <form method="get" action="/weather">
+            <select name="lat">
+                <option>Chose latitude</option>
+                {% for row in rows %}
+                 <option value="{{row}}">{{row}}</option>
+                 {% endfor %} 
+            </select>
+            <select name="lon">
+                <option>Chose longitude</option>
+                {% for row in rows2 %}
+                 <option value="{{row}}">{{row}}</option>
+                 {% endfor %} 
+            </select>
+            <input type="submit">
+        </form>
+    </div> 
     </div>
 
 

@@ -1,3 +1,4 @@
+from ast import Return
 from crypt import methods
 import email
 from unittest import result
@@ -28,7 +29,7 @@ def home():
     return render_template('base.html')
 
 @app.route('/login')
-def login(): # when the login button is pressed it should return this html
+def login(): 
     return render_template('login.html')
 
 @app.route('/login', methods=['POST'])
@@ -60,7 +61,7 @@ def addLocation():
 
 
 @app.route('/signup')
-def signup(): # when the login button is pressed it should return this html
+def signup(): 
     return render_template('signup.html')
 
 
@@ -75,29 +76,30 @@ def signup_action():
 
 @app.route('/weather')
 def not_main():
-    rows = sql_fetch('SELECT latitude, longitude FROM locations')
-    print(rows)
-    for row in rows:
-        print(row) 
-    return render_template('user_main.html', rows=rows)
-
-@app.route('/weather_get', methods=['post']) # change to a get
-def main():
-    lat = request.form.get('lat')
-    lon = request.form.get('lon')
-    result = weather.weather_get(lat,lon)
-    print(result)
-    timezone = result['timezone']
-    humidity = result['current']['humidity']
-    pressure = result['current']['pressure']
-    clouds = result['current']['clouds']
-    visibility = result['current']['visibility']
-    speed = result['current']['wind_speed']
-    gust = result['current']['wind_gust']
-    heading = result['current']['wind_deg']
-
-    return render_template('user_main.html',timezone=timezone,humidity=humidity, pressure=pressure, clouds=clouds, visibility=visibility,speed=speed, gust=gust, heading=heading,email=email)
-
+    latitude = request.args.get('lat')
+    longitude = request.args.get('lon')
+    rows = sql_fetch('SELECT latitude FROM locations')
+    rows2 = sql_fetch('SELECT longitude FROM locations')
+    if latitude == None:
+        return render_template('user_main.html', rows=rows, rows2=rows2)
+    else:
+        latitude = request.args.get('lat')
+        longitude = request.args.get('lon')
+        rows = sql_fetch('SELECT latitude FROM locations WHERE latitude = %d', [latitude])
+        rows2 = sql_fetch('SELECT longitude FROM locations WHERE longitude = %d', [longitude])
+        print(rows)
+        result = weather.weather_get(latitude,longitude)
+        print(result)
+        timezone = result['timezone']
+        humidity = result['current']['humidity']
+        pressure = result['current']['pressure']
+        clouds = result['current']['clouds']
+        visibility = result['current']['visibility']
+        speed = result['current']['wind_speed']
+        gust = result['current']['wind_gust']
+        heading = result['current']['wind_deg']
+        return render_template('user_main.html', rows=rows, rows2=rows2, timezone=timezone,humidity=humidity, pressure=pressure, clouds=clouds, visibility=visibility,speed=speed, gust=gust, heading=heading)
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
