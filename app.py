@@ -74,6 +74,16 @@ def signup_action():
   print('done')
   return redirect('/weather')
 
+
+@app.route('/get_values', methods=['POST'])
+def values():
+  lat = request.form.get('lat')
+  lon = request.form.get('lon')
+  print(lat, lon)
+  url = (f'/weather?lat={lat[1:3]}&lon={lon[1:3]}')
+  return redirect(url)
+
+
 @app.route('/weather')
 def not_main():
     latitude = request.args.get('lat')
@@ -85,8 +95,8 @@ def not_main():
     else:
         latitude = request.args.get('lat')
         longitude = request.args.get('lon')
-        rows = sql_fetch('SELECT latitude FROM locations WHERE latitude = %d', [latitude])
-        rows2 = sql_fetch('SELECT longitude FROM locations WHERE longitude = %d', [longitude])
+        rows = sql_fetch('SELECT latitude FROM locations ', [latitude])
+        rows2 = sql_fetch('SELECT longitude FROM locations ', [longitude])
         print(rows)
         result = weather.weather_get(latitude,longitude)
         print(result)
@@ -96,9 +106,9 @@ def not_main():
         clouds = result['current']['clouds']
         visibility = result['current']['visibility']
         speed = result['current']['wind_speed']
-        gust = result['current']['wind_gust']
+        #gust = result['current']['wind_gust']
         heading = result['current']['wind_deg']
-        return render_template('user_main.html', rows=rows, rows2=rows2, timezone=timezone,humidity=humidity, pressure=pressure, clouds=clouds, visibility=visibility,speed=speed, gust=gust, heading=heading)
+        return render_template('user_main.html', rows=rows, rows2=rows2, timezone=timezone,humidity=humidity, pressure=pressure, clouds=clouds, visibility=visibility,speed=speed, heading=heading)
     
 
 if __name__ == '__main__':

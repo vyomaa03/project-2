@@ -26,7 +26,7 @@
         <p>Current cloud: {{clouds}}</p>
         <p>Current visibility: {{visibility}}</p>
         <p>Current wind_speed: {{speed}}</p>
-        <p>Current wind_gust: {{gust}}</p>
+        <!-- <p>Current wind_gust: {{gust}}</p> -->
         <p>Current wind_heading: {{heading}}</p>
     </div>
 
@@ -42,7 +42,7 @@
  
     <div id="saved">
         Previously entered locations: <br>
-        <form method="get" action="/weather">
+        <form method="post" action="/get_values">
             <select name="lat">
                 <option>Chose latitude</option>
                 {% for row in rows %}
